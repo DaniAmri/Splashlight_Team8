@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop() {     
         super.onStop();
         if (camera != null) {
             camera.release();
