@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton imageButton;
     Camera camera;
     Camera.Parameters parameters;
-    boolean isflash = false;
-    boolean isOn = false;
+    boolean isflash = true;
+    boolean isOn = true;
 
 
     @Override
@@ -35,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (isflash) {
+                    if (isOn) {
+                        setOn();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                setOff();
+                            }
+                        }, 1500);
+                    } else {
+                        setOff();
+                    }
 
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -53,6 +65,32 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
+    private void setOff() {
+        imageButton.setImageResource(R.drawable.off);
+        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+        camera.setParameters(parameters);
+        camera.stopPreview();
+        isOn = false;
+    }
+
+    private void setOn() {
+        imageButton.setImageResource(R.drawable.on);
+        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+        camera.setParameters(parameters);
+        camera.startPreview();
+        isOn = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (camera != null) {
+            camera.release();
+            camera = null;
+        }
+    }
 }
