@@ -1,13 +1,16 @@
 package id.sch.smktelkom_mlg.project.xirpl608172635.team_splashlight;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,12 +19,56 @@ public class MainActivity extends AppCompatActivity {
     Camera.Parameters parameters;
     boolean isflash = true;
     boolean isOn = true;
-
+    Button one, two, three;
+    Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        one = (Button) findViewById(R.id.button1);
+        two = (Button) findViewById(R.id.button2);
+        three = (Button) findViewById(R.id.button3);
+
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+
+        one.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                vibrator.vibrate(7000);
+
+            }
+        });
+
+        two.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                long pattern[] = {60, 120, 180, 240, 300, 360, 420, 480};
+
+                vibrator.vibrate(pattern, 1);
+
+            }
+        });
+
+        three.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                vibrator.cancel();
+
+            }
+        });
+
 
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         if (getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
@@ -30,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             isflash = true;
 
         }
+
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
                             public void run() {
                                 setOff();
                             }
-                        }, 1500);
+                        }, 1000000);
                     } else {
                         setOff();
                     }
+
 
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -77,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         isOn = false;
     }
 
+
     private void setOn() {
         imageButton.setImageResource(R.drawable.on);
         parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
@@ -86,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {     
+    protected void onStop() {
         super.onStop();
         if (camera != null) {
             camera.release();
