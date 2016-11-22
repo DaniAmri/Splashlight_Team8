@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
+
     ImageButton imageButton;
     Camera camera;
     Camera.Parameters parameters;
