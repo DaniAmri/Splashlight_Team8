@@ -12,15 +12,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="id.sch.smktelkom_mlg.project.xirpl608172635.team_splashlight.SplashScreen">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        app:srcCompat="@drawable/flash" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WELCOME SCREEN"
-        android:textColor="#f0f0f0"
-        android:textSize="30sp"
-        android:layout_marginTop="237dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="111dp"
+        android:text="SPLASH LIGHT"
+        android:textColor="#f0f0f0"
+        android:textSize="30sp" />
 
 </RelativeLayout>
