@@ -28,3 +28,6 @@
       
       Tampilan Awal
    <a href='https://postimg.org/image/6mmvrchrr/' target='_blank'><img src='https://s23.postimg.org/6mmvrchrr/Screenshot_2016_12_07_20_16_08.jpg' border='0' alt="Screenshot_2016-12-07-20-16-08"/></a><br/><br/>
+
+### D. Video Applikasi
+   https://youtu.be/Xv2YuPYPdwo
