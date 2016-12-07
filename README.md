@@ -20,7 +20,7 @@
       
       Applikasi
    <a href='https://postimg.org/image/4xdsja22f/' target='_blank'><img src='https://s23.postimg.org/4xdsja22f/Screenshot_2016_12_07_20_16_25.jpg' border='0' alt="Screenshot_2016-12-07-20-16-25"/></a><br/><br/>
-<br /><a target='_blank' href='https://postimage.org/'>image hosting free</a><br /><br />
+<br /><a target='_blank' href='https://postimage.org/'></a><br /><br />
       
 
       
